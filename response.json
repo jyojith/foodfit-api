@@ -1,0 +1,26 @@
+{
+  "result": [
+    {
+      "dish_id": "dish_1561579505",
+      "metadata": {
+        "ingredients": [
+          {
+            "calories": 31.5,
+            "carb": 6.3,
+            "fat": 0.378,
+            "grams": 126.0,
+            "id": "ingr_0000000007",
+            "name": "cauliflower",
+            "protein": 2.268
+          }
+        ],
+        "total_calories": 31.5,
+        "total_carb": 6.3,
+        "total_fat": 0.378,
+        "total_mass": 126.0,
+        "total_protein": 2.268
+      },
+      "probability": 0.5749623775482178
+    }
+  ]
+}
