@@ -5,14 +5,12 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import pandas as pd
+import joblib
 
 model_path = '/Users/jyojith/starthack/nutrition5k_dataset_nosides/my_model.h5'  # Replace with your model path
 model = load_model(model_path)
 
-dataset_path = '/Users/jyojith/starthack/nutrition5k_dataset_nosides/imagery/realsense_overhead/'  # Replace with your dataset path
-dish_ids = [name for name in os.listdir(dataset_path) if os.path.isdir(os.path.join(dataset_path, name))]
-label_encoder = LabelEncoder()
-label_encoder.fit(dish_ids)
+label_encoder = joblib.load('label_encoder.joblib')
 
 import pandas as pd
 

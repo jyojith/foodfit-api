@@ -8,6 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from PIL import Image
 import io
 import json
+import joblib
 
 def parse_metadata(file_path):
     metadata = {}
@@ -47,16 +48,13 @@ def parse_metadata(file_path):
                 continue
     return metadata
 
-model_path = '/Users/jyojith/starthack/nutrition5k_dataset_nosides/my_model.h5'  # Replace with your model path
+model_path = 'my_model.h5'  # Replace with your model path
 model = load_model(model_path)
 
 metadata_path = 'metadata/dish_metadata_cafe1.csv'
 metadata = parse_metadata(metadata_path)
 
-dataset_path = '/Users/jyojith/starthack/nutrition5k_dataset_nosides/imagery/realsense_overhead/'  # Replace with your dataset path
-dish_ids = [name for name in os.listdir(dataset_path) if os.path.isdir(os.path.join(dataset_path, name))]
-label_encoder = LabelEncoder()
-label_encoder.fit(dish_ids)
+label_encoder = joblib.load('label_encoder.joblib')
 
 
 app = Flask(__name__)
@@ -66,18 +64,6 @@ app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 
-# def prepare_image(image_path, target_size=(150, 150)):
-#     # Load the RGB image
-#     rgb_img = img_to_array(load_img(image_path, target_size=target_size))
-#
-#     # Create mock depth color and depth raw images by replicating the RGB image
-#     depth_color_img = rgb_img.copy()
-#     depth_raw_img = rgb_img.copy()
-#
-#     # Combine the images into a single array
-#     combined_img = np.concatenate([rgb_img, depth_color_img, depth_raw_img], axis=-1)
-#     combined_img = np.expand_dims(combined_img, axis=0)  # Add batch dimension
-#     return combined_img
 
 def predict():
     if 'file' not in request.files:
