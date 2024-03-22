@@ -75,19 +75,6 @@ def prepare_image(image_path, target_size=(150, 150)):
 image_path = '/Users/jyojith/starthack/nutrition5k_dataset_nosides/pie.webp'  # Replace with your test image path
 prepared_image = prepare_image(image_path, target_size=(150, 150))
 
-# prediction = model.predict(prepared_image)
-# predicted_class = np.argmax(prediction, axis=1)[0]
-# dish_id = label_encoder.inverse_transform([predicted_class])[0]  # Use the same label encoder as during training
-#dish_metadata = metadata_df[metadata_df['dish_id'] == dish_id]
-# print(dish_id)
-
-# probabilities = model.predict(prepared_image)[0]  # Get probabilities for each class
-# probabilities_dict = {label_encoder.inverse_transform([i])[0]: prob for i, prob in enumerate(probabilities)}
-# sorted_probabilities = dict(sorted(probabilities_dict.items(), key=lambda item: item[1], reverse=True))
-# for dish, prob in sorted_probabilities.items():
-#     if prob > 0.001:
-#         print(f"{dish}: {prob:.3f}")
-
 # Load metadata
 metadata_path = 'metadata/dish_metadata_cafe1.csv'
 metadata = parse_metadata(metadata_path)
